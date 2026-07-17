@@ -18,5 +18,22 @@
     <ClCompile Include="SnakeGameCPP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ModelsLib.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Snake.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

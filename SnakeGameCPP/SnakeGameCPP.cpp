@@ -2,10 +2,22 @@
 //
 
 #include <iostream>
+#include "Game.h"
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    SnakeGame::Game game;
+    game.BoardSize.x = 10;
+    game.BoardSize.y = 10;
+    game.snake.HeadPosition.x = 5;
+    game.snake.HeadPosition.y = 5;
+    while (game.snake.HeadPosition.x > 0 && game.snake.HeadPosition.x < game.BoardSize.x && game.snake.HeadPosition.y > 0 && game.snake.HeadPosition.y < game.BoardSize.y)
+    {
+        game.Render();
+    }
+    return 0;
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
