@@ -47,8 +47,15 @@ void SnakeGame::Game::renderSnakeMovement()
 }
 
 void SnakeGame::Game::renderFoodPosition() {
-    FoodPosition.x = 1 + rand() % (BoardSize.x - 1);
-    FoodPosition.y = 1 + rand() % (BoardSize.y - 1);
+    while (true)
+    {
+        FoodPosition.x = 1 + rand() % (BoardSize.x - 1);
+        FoodPosition.y = 1 + rand() % (BoardSize.y - 1);
+        if (!this->snake.IsSnake(FoodPosition.x, FoodPosition.y))
+        {
+            break;
+        }
+    }
 }
 
 void SnakeGame::Game::Print() {
