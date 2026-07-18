@@ -6,12 +6,13 @@
 void SnakeGame::Game::Render() {
     renderSnakeMovement();
     Print();
-    if (snake.HeadPosition == FoodPosition)
+    if (snake.Head.position == FoodPosition)
     {
         snake.SnakeLen++;
+        snake.Grow();
         renderFoodPosition();
     }
-    Sleep(500);
+    Sleep(300);
 }
 
 void SnakeGame::Game::renderSnakeMovement()
@@ -39,42 +40,54 @@ void SnakeGame::Game::renderSnakeMovement()
 
     if (false)
     {
-        std::cout << "( " << snake.HeadPosition.x << " , " << snake.HeadPosition.y << " )      ";
+        std::cout << "( " << snake.Head.position.x << " , " << snake.Head.position.y << " )      ";
         std::cout << "( " << FoodPosition.x << " , " << FoodPosition.y << " )\n";
     }
 
 }
 
 void SnakeGame::Game::renderFoodPosition() {
-    FoodPosition.x = 1 + rand() % (BoardSize.x - 1);
-    FoodPosition.y = 1 + rand() % (BoardSize.y - 1);
+    while (true)
+    {
+        FoodPosition.x = 1 + rand() % (BoardSize.x - 1);
+        FoodPosition.y = 1 + rand() % (BoardSize.y - 1);
+        if (!this->snake.IsSnake(FoodPosition.x, FoodPosition.y))
+        {
+            break;
+        }
+    }
 }
 
 void SnakeGame::Game::Print() {
     system("cls");
+    std::cout << "Snake Length = " << snake.SnakeLen << "\n";
     for (int i = 0; i < this->BoardSize.x+1; i++)
     {
         for (int j = 0; j < this->BoardSize.y+1; j++)
         {
             if (i == 0 || i == this->BoardSize.x)
             {
-                std::cout << " - ";
+                std::cout << "-";
             }
             else if (j == 0 || j == this->BoardSize.y)
             {
-                std::cout << " | ";
+                std::cout << "|";
             }
-            else if (snake.HeadPosition.x == j && snake.HeadPosition.y == i)
+            else if (snake.Head.position.x == j && snake.Head.position.y == i)
             {
-                std::cout << " O ";
+                std::cout << "O";
+            }
+            else if (snake.IsSnake(j, i))
+            {
+                std::cout << "o";
             }
             else if (FoodPosition.x == j && FoodPosition.y == i)
             {
-                std::cout << " x ";
+                std::cout << "x";
             }
             else
             {
-                std::cout << "   ";
+                std::cout << " ";
             }
 
             if (j == this->BoardSize.y)

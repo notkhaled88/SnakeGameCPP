@@ -10,9 +10,9 @@ int main()
     SnakeGame::Game game;
     game.BoardSize.x = 10;
     game.BoardSize.y = 10;
-    game.snake.HeadPosition.x = 5;
-    game.snake.HeadPosition.y = 5;
-    while (game.snake.HeadPosition.x > 0 && game.snake.HeadPosition.x < game.BoardSize.x && game.snake.HeadPosition.y > 0 && game.snake.HeadPosition.y < game.BoardSize.y)
+    game.snake.Head.position.x = game.BoardSize.x/2;
+    game.snake.Head.position.y = game.BoardSize.y/2;
+    while (game.snake.Head.position.x > 0 && game.snake.Head.position.x < game.BoardSize.x && game.snake.Head.position.y > 0 && game.snake.Head.position.y < game.BoardSize.y && game.snake.IsAlive)
     {
         game.Render();
     }
