@@ -27,6 +27,10 @@ void SnakeGame::Snake::Move(Direction direction)
 			this->Head.position.y++;
 			break;
 	}
+	if (IsSnake(this->Head.position.x, this->Head.position.y))
+	{
+		this->IsAlive = false;
+	}
 	this->MovingDirection = direction;
 }
 void SnakeGame::Snake::Grow()

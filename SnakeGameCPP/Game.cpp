@@ -12,7 +12,7 @@ void SnakeGame::Game::Render() {
         snake.Grow();
         renderFoodPosition();
     }
-    Sleep(500);
+    Sleep(300);
 }
 
 void SnakeGame::Game::renderSnakeMovement()
@@ -67,27 +67,27 @@ void SnakeGame::Game::Print() {
         {
             if (i == 0 || i == this->BoardSize.x)
             {
-                std::cout << " - ";
+                std::cout << "-";
             }
             else if (j == 0 || j == this->BoardSize.y)
             {
-                std::cout << " | ";
+                std::cout << "|";
             }
             else if (snake.Head.position.x == j && snake.Head.position.y == i)
             {
-                std::cout << " O ";
+                std::cout << "O";
             }
             else if (snake.IsSnake(j, i))
             {
-                std::cout << " o ";
+                std::cout << "o";
             }
             else if (FoodPosition.x == j && FoodPosition.y == i)
             {
-                std::cout << " x ";
+                std::cout << "x";
             }
             else
             {
-                std::cout << "   ";
+                std::cout << " ";
             }
 
             if (j == this->BoardSize.y)
